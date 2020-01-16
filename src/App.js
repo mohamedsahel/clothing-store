@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -17,8 +17,10 @@ const Hatspage = () => (
 function App() {
   return (
     <div>
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/Hats' component={Hatspage} />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/Hats' component={Hatspage} />
+      </Switch>
     </div>
   );
 }
