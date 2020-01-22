@@ -23,7 +23,15 @@
   }
 
   .quantity {
-    padding-left: 23px;
+    display: flex;
+
+    .arrow {
+      cursor: pointer;
+    }
+
+    .value {
+      margin: 0 10px;
+    }
   }
 
   .price {
@@ -31,7 +39,22 @@
   }
 
   .remove-button {
-    padding-left: 12px;
+    padding-left: 23px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      &::after {
+        content: '';
+        width: 30px;
+        height: 30px;
+        background: rgba(212, 212, 212, 0.527);
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
   }
 }
