@@ -3,14 +3,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from "reselect";
 
-
-import './App.css';
-
+/* Pages and header */
 import HomePage from "./pages/homepage/homepage.component.jsx";
 import ShopPage from "./pages/shop/shop.component";
 import SigninAndSignup from "./pages/signin-and-signup/signin-and-signup.component";
-import CheckoutPage from "./pages/checkout/checkout.page";
-
+import CheckoutPage from "./pages/checkout/checkout.component";
 import Header from "./components/header/header.component";
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
@@ -19,7 +16,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 
-
+import './App.css';
 
 
 class App extends React.Component {
@@ -38,9 +35,8 @@ class App extends React.Component {
               id: snapShot.id,
               ...snapShot.data()
           });
-
-
         });
+
       } else {
         setCurrentUser(userAuth)
       }

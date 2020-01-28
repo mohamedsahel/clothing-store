@@ -7,40 +7,48 @@ import { selectCartItems, selectCartTotale } from "../../redux/cart/cart.selecto
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
-import './checkout.styles.scss';
+//import './checkout.styles.scss';
+import { 
+        CheckoutContainer,
+        CheckoutHeader,
+        CheckoutHeaderBlock,
+        TotaleDiv,
+        TestWarning
+        }
+        from "./checkout.styles";
 
 const CheckoutPage = ({cartItems, cartTotale}) => (
-    <div className="checkout-page">
-        <div className='checkout-header' >
-            <div className='checkout-block' >
+    <CheckoutContainer>
+        <CheckoutHeader>
+            <CheckoutHeaderBlock>
                 <span>Products</span>
-            </div>
-            <div className='checkout-block' >
+            </CheckoutHeaderBlock>
+            <CheckoutHeaderBlock>
                 <span>Description</span>
-            </div>
-            <div className='checkout-block' >
+            </CheckoutHeaderBlock>
+            <CheckoutHeaderBlock>
                 <span>Quantity</span>
-            </div>
-            <div className='checkout-block' >
+            </CheckoutHeaderBlock>
+            <CheckoutHeaderBlock>
                 <span>Price</span>
-            </div>
-            <div className='checkout-block' >
+            </CheckoutHeaderBlock>
+            <CheckoutHeaderBlock>
                 <span>Remove</span>
-            </div>
-        </div>
+            </CheckoutHeaderBlock>
+        </CheckoutHeader>
         {
             cartItems.map(cartItem => (
                 <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))
         }
-        <div className="total">TOTALE: ${cartTotale}</div>
-        <div className='test-warning'>
+        <TotaleDiv>TOTALE: ${cartTotale}</TotaleDiv>
+        <TestWarning>
              *Please use the following test credit cart for payments*
              <br/>
              4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
-        </div>
+        </TestWarning>
         <StripeCheckoutButton price={cartTotale} />
-    </div>
+    </CheckoutContainer>
 )
 
 const mapStateToProps = createStructuredSelector({
